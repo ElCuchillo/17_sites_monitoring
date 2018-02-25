@@ -12,7 +12,7 @@ Example of script launch on Linux, Python 3.5:
 
 $ python3 check_sites_health.py <filename>
 ```
-where <filename> is the file with URLs list for testing.
+where 'filename' is the file with URLs list for testing.
 
 Note, the script needs additional python modules to work. It would be installed by command:
 
