@@ -15,7 +15,8 @@ def is_server_respond_ok(url):
     try:
         response = requests.get(url)
         return response.ok
-    except Exception:
+    except (requests.exceptions.InvalidSchema,
+            requests.exceptions.ConnectionError):
         return False
 
 
@@ -27,7 +28,7 @@ def check_domain_expiration_date(domain_name, paid_period=30):
         expiration_date = response.expiration_date
     elif isinstance(response.expiration_date, list):
         expiration_date = response.expiration_date[0]
-    return ((expiration_date - datetime.now()).days > paid_period)
+    return (expiration_date - datetime.now()).days > paid_period
 
 
 def check_url(url):
